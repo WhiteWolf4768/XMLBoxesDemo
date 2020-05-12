@@ -14,7 +14,6 @@ import javax.persistence.*;
 public class BoxModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long boxId;
 
     @ManyToOne

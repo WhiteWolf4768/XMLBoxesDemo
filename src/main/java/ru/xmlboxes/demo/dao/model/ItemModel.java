@@ -13,7 +13,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class ItemModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long itemId;
 
     @Column(name = "color")

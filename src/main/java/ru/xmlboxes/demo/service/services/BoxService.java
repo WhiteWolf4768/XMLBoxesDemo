@@ -58,10 +58,17 @@ public class BoxService {
 
     public Collection<Storable> getStoredItems(BoxServiceModel boxServiceModel) {
         Collection<Storable> storables = new HashSet<>();
+        List<BoxModel> boxModels;
+        List<ItemModel> itemModels;
 
-        Long boxId = boxServiceModel.getBoxId();
-        List<BoxModel> boxModels = boxRepository.findByContainedIn_BoxId(boxId);
-        List<ItemModel> itemModels = itemRepository.findByContainedIn_BoxId(boxId);
+        if (boxServiceModel != null) {
+            Long boxId = boxServiceModel.getBoxId();
+            boxModels = boxRepository.findByContainedIn_BoxId(boxId);
+            itemModels = itemRepository.findByContainedIn_BoxId(boxId);
+        } else {
+            boxModels = boxRepository.findByContainedIn_BoxId(null);
+            itemModels = itemRepository.findByContainedIn_BoxId(null);
+        }
 
         for (BoxModel boxModel : boxModels) {
             storables.add(boxModelConverter.convertToServiceModel(boxModel));

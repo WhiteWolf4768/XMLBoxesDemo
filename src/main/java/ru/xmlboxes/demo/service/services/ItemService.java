@@ -41,8 +41,8 @@ public class ItemService {
         return itemServiceModels;
     }
 
-    public ItemServiceModel insert(ItemServiceModel boxServiceModel) {
-        ItemModel insertedItemModel = itemRepository.save(itemModelConverter.convertToDaoModel(boxServiceModel));
+    public ItemServiceModel insert(ItemServiceModel itemServiceModel) {
+        ItemModel insertedItemModel = itemRepository.save(itemModelConverter.convertToDaoModel(itemServiceModel));
         return itemModelConverter.convertToServiceModel(insertedItemModel);
     }
 }
